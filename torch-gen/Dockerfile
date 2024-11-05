@@ -23,8 +23,7 @@ RUN pip install --no-cache-dir \
     sentence-transformers
 
 # Verify CUDA installation (optional, for debugging)
-RUN python3 -c "import torch; print('CUDA available:',
-torch.cuda.is_available())"
+RUN python3 -c "import torch; print('CUDA available:', torch.cuda.is_available())"
 
 # Set the entrypoint to Python for easy script running (optional)
 ENTRYPOINT ["python3"]
