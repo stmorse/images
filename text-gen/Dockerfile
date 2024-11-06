@@ -2,13 +2,13 @@
 FROM huggingface/transformers-pytorch-gpu:latest
 
 # Install additional packages and clean up apt cache
-RUN apt-get update && \
-    rm -rf /var/lib/apt/lists/* /var/cache/apt/* /tmp/*
+# RUN apt-get update && \
+#     rm -rf /var/lib/apt/lists/* /var/cache/apt/* /tmp/*
 
-# Install Python packages with pip and clean up pip cache
-RUN pip install --no-cache-dir \
-    scikit-learn matplotlib && \
-    rm -rf /root/.cache/pip /tmp/*
+# # Install Python packages with pip and clean up pip cache
+# RUN pip install --no-cache-dir \
+#     scikit-learn matplotlib && \
+#     rm -rf /root/.cache/pip /tmp/*
 
 # install additional required Python libraries
 # RUN pip install --no-cache-dir matplotlib ipykernel scikit-learn
