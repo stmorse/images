@@ -34,6 +34,9 @@ jobs:
     - name: Define lowercase repository owner
       id: repo
       run: echo "REPO_OWNER=$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+      
+    - name: Check disk usage
+        run: df -h
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v3
