@@ -1,12 +1,12 @@
-name: Text Image Build
-run-name: Build Text Image
+name: uv Image Build
+run-name: Build uv Image
 on: 
   push:
     branches:
     - main
     paths:
-    - '.github/workflows/text-build.yml'
-    - 'text-gen/**'
+    - '.github/workflows/uv-build.yml'
+    - 'uv/**'
 
 jobs:
   build_and_push:
@@ -34,13 +34,10 @@ jobs:
     - name: Define lowercase repository owner
       id: repo
       run: echo "REPO_OWNER=$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
-      
-    - name: Check disk usage
-      run: df -h
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v3
       with:
-        context: ./text-gen
+        context: ./uv
         push: true
-        tags: ghcr.io/${{ env.REPO_OWNER }}/text-gen:latest
+        tags: ghcr.io/${{ env.REPO_OWNER }}/uv:latest
