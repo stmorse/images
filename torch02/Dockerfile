@@ -9,8 +9,9 @@ RUN apt-get update && apt-get install -y \
 RUN pip install --no-cache-dir \
     https://download.pytorch.org/whl/cu75/torch-0.2.0.post3-cp36-cp36m-manylinux1_x86_64.whl
 
-WORKDIR /app
-COPY . /app
+RUN pip install --no-cache-dir matplotlib
 
-CMD ["python", "your_script.py"]
+WORKDIR /app
+
+#CMD ["python"]
 
