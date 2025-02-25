@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: uv
+spec:
+  securityContext:
+    runAsUser: 270999
+    runAsGroup: 1132
+  containers:
+    - name: uv-pod
+      image: 'ghcr.io/stmorse/uv:latest'
+      resources:
+        requests:
+          memory: '4Gi'
+          #nvidia.com/gpu: '1'
+          cpu: '1'
+        limits:
+          memory: '8Gi'
+          #nvidia.com/gpu: '1'
+          cpu: '1'
+      command: ['/bin/sh', '-c', 'sleep infinity']
+      volumeMounts:
+        - name: home
+          mountPath: /home
+  volumes:
+    - name: home
+      nfs:
+        server: 128.239.56.166
+        path: /sciclone/home/stmorse
